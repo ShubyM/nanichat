@@ -9,5 +9,5 @@ const animeSearch = (query) => {
 	return axios.get(request)
 }
 	
-animeSearch("narto").then(response => console.log(response.data)).catch(console.log) 
+animeSearch("boku").then(response => console.log(response.data.results.length)).catch(console.log) 
 
