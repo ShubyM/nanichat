@@ -1,9 +1,11 @@
-import {StatusBar} from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
-import { SafeAreaView, FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, FlatList, StyleSheet, Text, View, Button } from 'react-native';
+
+
 
 // drop down menu for watching
-function displayWatching() {
+function openList() {
     
 }
 
@@ -16,21 +18,21 @@ function MyProfile() {
     } 
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Button onPress={ProfileName}/>
+            <Button onPress={ProfileName} title="Profile"/>
             <View>
                 <Text>{name}'s Profile</Text>
             </View>
             <View>
-                <Button onPress={displayWatching} title="Currently Watching"/>
+                <Button onPress={openList} title="Currently Watching"/>
             </View>
             <View>
-                <Button onPress={openWatchList} title="Want to Watch"/>
+                <Button onPress={openList} title="Want to Watch"/>
             </View>
             <View>
-                <Button onPress={openWatched} title="Already Watched"/>
+                <Button onPress={openList} title="Already Watched"/>
             </View>
             <View>
-                <Button onPress={openRecs} title="Recommendations"/>
+                <Button onPress={openList} title="Recommendations"/>
             </View>
         </SafeAreaView>
     )
