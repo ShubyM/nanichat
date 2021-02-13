@@ -23,16 +23,16 @@ function MyProfile() {
                 <Text>{name}'s Profile</Text>
             </View>
             <View>
-                <Button onPress={openList} title="Currently Watching"/>
+                <Text>Currently Watching</Text>
             </View>
             <View>
-                <Button onPress={openList} title="Want to Watch"/>
+                <Text>Want to Watch</Text>
             </View>
             <View>
-                <Button onPress={openList} title="Already Watched"/>
+                <Text>Already Watched</Text>
             </View>
             <View>
-                <Button onPress={openList} title="Recommendations"/>
+                <Text>Recommendations</Text>
             </View>
         </SafeAreaView>
     )
