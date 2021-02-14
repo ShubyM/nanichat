@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { firebase } from '../config'
 
 function Register({ navigation }) {
@@ -51,31 +52,46 @@ function Register({ navigation }) {
       flex: 1, 
       justifyContent: "center", 
       alignItems: "center" }}>
-      <Text>Register an Account</Text>
-      <TextInput
+      <Text style={{fontSize: 18, fontWeight: "bold", marginBottom: 5}}>Register an Account</Text>
+      <TextInput style={styles.inputStyle}
         placeholder="Name"
         onChangeText={(text) => setName(text)}
         value={name}
         autoCapitalize="none"
       />
-      <TextInput
+      <TextInput style={styles.inputStyle}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
         autoCapitalize="none"
       />
-      <TextInput
+      <TextInput style={styles.inputStyle}
         placeholder="Password"
         onChangeText={(text) => setPassword(text)}
         value={password}
         autoCapitalize="none"
       />
       <Button title="Register" onPress={() => onRegisterPress()} />
-      <Text>
-        Already have an account? <Text onPress={onSwitchLoginPress}>Login</Text>
+      <Text style={{marginTop: 10}}>
+        Already have an account? 
       </Text>
+      <TouchableOpacity onPress={onSwitchLoginPress}>
+        <Text>Login</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
 
 export default Register;
+
+const styles = StyleSheet.create({
+  inputStyle: {
+    height: 40, 
+    width: 250, 
+    borderColor: "gray", 
+    backgroundColor: "#FFFFFF", 
+    paddingLeft: 10, 
+    borderWidth: 1,
+    marginBottom: 20 
+  }
+})

@@ -42,7 +42,6 @@ function Search(props) {
               backgroundColor: "#57CC99",  
               textShadowColor: "#20232a"}} key={item.title}> 
             {item.title.substring(0, 45)} 
-            Episodes: {item.episodes}
           </Text>
           <Image source={{uri: item.image_url}} style={{
               width: 50, 
