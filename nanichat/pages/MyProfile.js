@@ -11,8 +11,12 @@ function MyProfile(props) {
             justifyContent: "flex-start", 
             alignItems: "flex-start" }}>
             <View style={{alignSelf: "center"}}>
-                <Image source={require('./aqua.png')} style={{height: 150, width: 150, marginTop: 30 }}/>
-                <Text>{props.name}'s Profile</Text>
+                <Image source={require('./aqua.png')} style={{
+                    height: 150, 
+                    width: 150, 
+                    borderRadius: 75, 
+                    marginTop: 30 }}/>
+                <Text style={{alignSelf: "center"}}>{props.name}'s Profile</Text>
             </View>
             <View style={styles.viewStyle}>
                 <Text style={styles.textStyle}>Currently Watching</Text>
@@ -52,7 +56,8 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         paddingTop: 5,
         marginLeft: 30,
-        marginTop: 15
+        marginTop: 15,
+        borderRadius: 5
     },
     textStyle: {
         width: 255,
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     buttonStyle: {
         height: 30,
         width: 30,
-        backgroundColor: "#51A47F",
+        backgroundColor: "#2FC069",
     },
     buttonText: {
         fontSize: 18,
