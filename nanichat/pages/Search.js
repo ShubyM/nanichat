@@ -1,18 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, FlatList, StyleSheet, Text, View, Button } from 'react-native';
+import { SafeAreaView, FlatList, StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 import React, { useState, useEffect } from "react";
-
-import {
-  View,
-  Button,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-} from "react-native";
-
 import { search } from "../util.js";
 
 const searchBar = () => {
