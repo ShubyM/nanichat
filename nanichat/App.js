@@ -1,24 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Home from './components/Home';
-import searchBar from './pages/Search.js';
-
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./components/Home";
+import searchBar from "./pages/Search.js";
+import { firebase } from "./config.js";
 
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(false);
+  // const [user, setUser] = useState(null)
+  const [name, setName] = useState("");
+  const [id, setId] = useState("");
+  const [friends, setFriends] = useState([]);
 
-  // if (loading) {	
-  //   return (	
-  //     <></>	
-  //   )	
+  useEffect(() => {
+    let user = firebase.auth().currentUser;
+
+    if (user === null) {
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(true);
+      let usersRef = firebase.firestore().collection("users");
+      usersRef
+        .doc(user.uid)
+        .get()
+        .then((document) => {
+          setName(document.data().name);
+          setId(document.data().id);
+          setFriends(document.data().friends);
+        });
+    }
+    //
+  });
+
+  // name , id, friends
+
+  // if (loading) {
+  //   return (
+  //     <></>
+  //   )
   // }
 
   // useEffect(() => {
@@ -41,25 +66,17 @@ export default function App() {
   //     }
   //   });
   // }, []);
-  
+  //
+  //
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        { user ? (
-          <Stack.Screen name="Home">
-            <Home />
-          </Stack.Screen>
-        ) : (
-          <>
-            {/* <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} /> */}
-            <Stack.Screen name="Home">
-              {props => <Home userId={props.id} name={props.name} friends=""/>}
-            </Stack.Screen>
-          </>
-        )}
-        {/*<Stack.Screen name="Register" component={Register} />*/}
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Home">
+          {() => <Home userId={id} name={name} friends={friends} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -68,8 +85,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
