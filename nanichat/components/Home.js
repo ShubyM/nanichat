@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 export default function Home(props) {
     return (
         <Tab.Navigator tabBarOptions={{showLabel: false}}>
-            <Tab.Screen name="Dashboard" component={Dashboard} options={{tabBarIcon: ({focused}) =>
+            <Tab.Screen name="Dashboard" children={() => <Dashboard id={props.route.params.user.id}/>} options={{tabBarIcon: ({focused}) =>
                 focused ? (<MaterialIcons name='dashboard' size={40} color='#58CCE5' />)
                 : (<MaterialIcons name='dashboard' size={30} color='black' />),
             }} />
