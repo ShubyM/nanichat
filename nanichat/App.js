@@ -35,7 +35,6 @@ export default function App() {
           setFriends(document.data().friends);
         });
     }
-    //
   });
 
   // name , id, friends

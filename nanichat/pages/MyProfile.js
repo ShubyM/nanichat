@@ -1,10 +1,60 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView, FlatList, StyleSheet, Text, TouchableOpacity, View, Button, Image } from 'react-native';
+import { firebase } from '../config'
 
 // main function for page
 function MyProfile(props) {
-	// console.log(props);
+    const [watchlist, setWatchlist] = useState([])
+    const [currWatch, setCurrWatch] = useState([])
+    const [completed, setCompleted] = useState([])
+    const [recommended, setRecommended] = useState([])
+
+    useEffect(() => {
+        firebase.firestore().collection('watchlists')
+            .where("id", "==", props.id)
+            .onSnapshot(
+                querySnapshot => {
+                    const newWatchlist = []
+                    querySnapshot.forEach(doc => {
+                        const watch = doc.data()
+                        watch.id = doc.id
+                        newWatchlist.push(watch)
+                    });
+                    setWatchlist(newWatchlist)
+                },
+                error => {
+                    console.log(error)
+                }
+            )
+    }, [])
+
+    const renderWatch = ({item}) => {
+        return (
+            <View>
+                <Text>
+                    {item.title}
+                </Text>
+                <Image source={{uri: item.image}} style={{width: 50, height: 50}}/>
+                <Text>
+                    {item.airing}
+                </Text>
+                <Text>
+                    {item.episodes}
+                </Text>
+                <Text>
+                    {item.rating}
+                </Text>
+                <Text>
+                    {item.type}
+                </Text>
+                <Text>
+                    {item.score}
+                </Text>
+            </View>
+        )
+    }
+
     return (
         <SafeAreaView style={{ 
             backgroundColor: "#58CCE5", 
@@ -20,29 +70,49 @@ function MyProfile(props) {
                 <Text style={{alignSelf: "center"}}>{props.name}'s Profile</Text>
             </View>
             <View style={styles.viewStyle}>
-                <Text style={styles.textStyle}>Currently Watching</Text>
-                <TouchableOpacity style={styles.buttonStyle}>
-                    <Text style={styles.buttonText}>+</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.viewStyle}>
                 <Text style={styles.textStyle}>Want to Watch</Text>
                 <TouchableOpacity style={styles.buttonStyle}>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
             </View>
+            <FlatList 
+                data={watchlist}
+                renderItem={renderWatch}
+                keyExtractor={(item) => item.id}
+            />
+            <View style={styles.viewStyle}>
+                <Text style={styles.textStyle}>Currently Watching</Text>
+                <TouchableOpacity style={styles.buttonStyle}>
+                    <Text style={styles.buttonText}>+</Text>
+                </TouchableOpacity>
+            </View>
+            <FlatList 
+                data={currWatch}
+                renderItem={renderWatch}
+                keyExtractor={(item) => item.id}
+            />
             <View style={styles.viewStyle}>
                 <Text style={styles.textStyle}>Already Watched</Text>
                 <TouchableOpacity style={styles.buttonStyle}>
                     <Text style={styles.buttonText}>R</Text>
                 </TouchableOpacity>
             </View>
+            <FlatList 
+                data={completed}
+                renderItem={renderWatch}
+                keyExtractor={(item) => item.id}
+            />
             <View style={styles.viewStyle}>
                 <Text style={styles.textStyle}>Recommendations</Text>
                 <TouchableOpacity style={styles.buttonStyle}>
                     <Text style={styles.buttonText}>-</Text>
                 </TouchableOpacity>
             </View>
+            <FlatList 
+                data={recommended}
+                renderItem={renderWatch}
+                keyExtractor={(item) => item.id}
+            />
         </SafeAreaView>
     )
 }

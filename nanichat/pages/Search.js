@@ -48,7 +48,7 @@ function Search(props) {
               height: 50, 
               borderWidth: 1,
               borderColor: "#000000" }}/>
-          <TouchableOpacity onPress={addToWatchlist} style={{
+          <TouchableOpacity onPress={addToWatchlist({item})} style={{
               width: 40, 
               height: 50,
               borderWidth: 1,
@@ -63,11 +63,9 @@ function Search(props) {
   };
 
   const addToWatchlist = ({item}) => {
-    const timestamp = firebase.firestore.FieldValue.serverTimeStamp();
     const data = {
       id: userID,
       airing: item.airing,
-      createdAt: timestamp,
       episodes: item.episodes,
       image: item.image_url,
       rating: item.rating,
