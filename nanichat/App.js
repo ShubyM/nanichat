@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './components/Home';
+import searchBar from './pages/Search.js';
 
 
 const Stack = createStackNavigator();
@@ -58,9 +59,12 @@ export default function App() {
             </Stack.Screen>
           </>
         )}
+				<Stack.Screen name="Search" component={searchBar} />
+        {/* <Stack.Screen name="Register" component={Register} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
+	// don't know if serach stack screen needed
 }
 
 const styles = StyleSheet.create({
