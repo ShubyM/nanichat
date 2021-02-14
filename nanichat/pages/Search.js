@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, FlatList, StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 import React, { useState, useEffect } from "react";
 import { search } from "../util.js";
+import { AntDesign } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const searchBar = () => {
   const [query, setQuery] = React.useState("");
@@ -19,7 +21,13 @@ const searchBar = () => {
     return isLoading ? (
       <Text> ...loading </Text>
     ) : (
-      results.map((item) => <Text key={item.title}> {item.title} </Text>)
+      results.map((item) => 
+        <View>
+          <Text key={item.title}> {item.title} </Text>
+          <TouchableOpacity>
+            <AntDesign name="pluscircleo" size={24} color="black" />
+          </TouchableOpacity>
+        </View>)
     );
   };
 
@@ -32,9 +40,9 @@ const searchBar = () => {
       }}
     >
       <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+        style={{ height: 40, borderColor: "gray", borderWidth: 1, width: 250, padding: 10}}
         onChangeText={(text) => setQuery(text)}
-        placeholder="search"
+        placeholder="Search"
         value={query}
       />
       <Button title="search" onPress={() => getAnime()}></Button>

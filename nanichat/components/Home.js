@@ -27,5 +27,3 @@ export default function Home(props) {
         </Tab.Navigator>
     )
 }
-
-export default Home;

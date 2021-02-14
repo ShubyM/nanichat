@@ -52,19 +52,17 @@ export default function App() {
           </Stack.Screen>
         ) : (
           <>
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} />
+            {/* <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} /> */}
             <Stack.Screen name="Home">
               {props => <Home {...props} extraData={user} />}
             </Stack.Screen>
           </>
         )}
-				<Stack.Screen name="Search" component={searchBar} />
         {/* <Stack.Screen name="Register" component={Register} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
-	// don't know if serach stack screen needed
 }
 
 const styles = StyleSheet.create({
