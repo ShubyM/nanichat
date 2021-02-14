@@ -2,13 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, FlatList, StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 import React, { useState, useEffect } from "react";
 import { search } from "../util.js";
+import { firebase } from '../config'
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const searchBar = () => {
+function Search(props) {
   const [query, setQuery] = React.useState("");
   const [results, setResults] = React.useState([]);
   const [isLoading, setLoading] = React.useState(true);
+
+  const watchlist = firebase.firestore().collection('users')
+  const userID = props.id
+  
 
   const getAnime = () => {
     search(query).then((response) => {
@@ -51,4 +56,4 @@ const searchBar = () => {
   );
 };
 
-export default searchBar;
+export default Search;

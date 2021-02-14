@@ -3,17 +3,12 @@ import React, { useState } from "react";
 import { SafeAreaView, FlatList, StyleSheet, Text, TouchableOpacity, View, Button, Image } from 'react-native';
 
 // main function for page
-function MyProfile() {
-    const [name, setName] = useState("");
-    const ProfileName = () => {
-        setName("Sunny")
-    }
+function MyProfile(props) {
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "space-around", alignItems: "flex-start"}}>
             <View style={{alignSelf: "center"}}>
                 <Image source={require('./aqua.png')} style={{height: 150, width: 150}}/>
-                <Button onPress={ProfileName} title="Profile" />
-                <Text>{name}'s Profile</Text>
+                <Text>{props.name}'s Profile</Text>
             </View>
             <View style={styles.viewStyle}>
                 <Text style={styles.textStyle}>Currently Watching</Text>

@@ -31,8 +31,7 @@ function Login({ navigation }) {
                     alert("User does not exist anymore.")
                     return;
                 }
-                const user = firestoreDocument.data()
-                navigation.navigate('Home', {screen: 'Dashboard'})
+                navigation.navigate('Home')
             })
             .catch(error => {
                 alert(error)
