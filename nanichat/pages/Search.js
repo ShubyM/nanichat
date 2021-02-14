@@ -36,18 +36,6 @@ function Search(props) {
     );
   };
 
-	// const getName = () => {
-	// 	let user = firebase.auth().currentUser
-	// 	let 
-	// }
-	// const testUserData = () => {
-	// 	let user = firebase.auth().currentUser
-	// 	let s = firebase.firestore().collection('users').doc(user.uid).onSnapshot(data => console.log(data.data().name))
-	// 	// console.log(s)
-	// 		// Vg.collection('users').where("capital", "==", true).get().then(console.log)
-	// 		// .doc(user.uid).get().then(res => console.log(res.data))
-	// 	// console.log(user)
-	// }
 
   return (
     <SafeAreaView
@@ -63,7 +51,6 @@ function Search(props) {
         placeholder="Search"
         value={query}
       />
-		{testUserData()}
       <Button title="search" onPress={() => getAnime()}></Button>
       <ScrollView>{renderItems()}</ScrollView>
     </SafeAreaView>
