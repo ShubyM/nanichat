@@ -48,14 +48,14 @@ export default function App() {
       <Stack.Navigator>
         { user ? (
           <Stack.Screen name="Home">
-            {props => <Home {...props} extraData={user} />}
+            <Home />
           </Stack.Screen>
         ) : (
           <>
-            {/* <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} /> */}
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Home">
-              {props => <Home {...props} extraData={user} />}
+              {props => <Home userId={props.id} name={props.name} friends=""/>}
             </Stack.Screen>
           </>
         )}
