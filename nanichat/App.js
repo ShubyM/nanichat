@@ -75,7 +75,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home">
-          {() => <Home userId={id} name={name} friends={friends} />}
+          {() => <Home id={id} name={name} friends={friends} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
