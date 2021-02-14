@@ -9,6 +9,7 @@ import {
   Button,
 } from "react-native";
 
+import { firebase } from "../config.js";
 import { search } from "../util.js";
 
 // drop down menu for watching
@@ -18,7 +19,7 @@ function openList() {}
 function MyProfile() {
   const [name, setName] = useState("");
   const ProfileName = () => {
-		setName("sunny")
+    setName("Sunny");
   };
   return (
     <SafeAreaView
@@ -29,16 +30,16 @@ function MyProfile() {
         <Text>{name}'s Profile</Text>
       </View>
       <View>
-        <Button onPress={openList} title="Currently Watching" />
+        <Text>Currently Watching</Text>
       </View>
       <View>
-        <Button onPress={openList} title="Want to Watch" />
+        <Text>Want to Watch</Text>
       </View>
       <View>
-        <Button onPress={openList} title="Already Watched" />
+        <Text>Already Watched</Text>
       </View>
       <View>
-        <Button onPress={openList} title="Recommendations" />
+        <Text>Recommendations</Text>
       </View>
     </SafeAreaView>
   );
