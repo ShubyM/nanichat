@@ -23,37 +23,57 @@ function MyProfile(props) {
                     });
                     setWatchlist(newWatchlist)
                 },
+                error => {
+                    console.log(error)
+                }
             )
     }, [])
 
     const renderWatch = ({item}) => {
         return (
-            <View>
-                <Text>
-                    {item.title}
-                </Text>
-                <Image source={{uri: item.image}} style={{width: 50, height: 50}}/>
-                <Text>
-                    {item.airing}
-                </Text>
-                <Text>
-                    {item.episodes}
-                </Text>
-                <Text>
-                    {item.rating}
-                </Text>
-                <Text>
-                    {item.type}
-                </Text>
-                <Text>
-                    {item.score}
-                </Text>
-            </View>
+            <SafeAreaView style={{
+                width: 300,
+                marginLeft: 30,
+                backgroundColor: "#57CC9B",
+                borderWidth: 1,
+                borderColor: "#2FC069",
+                flexDirection: "row", 
+                justifyContent: "flex-start",
+                alignContent: "flex-start"}}>
+                <View>
+                    <Image source={{uri: item.image}} style={{width: 125, height: 125}}/>
+                </View>
+                <View style={{
+                    marginLeft: 10,
+                    marginTop: 5,
+                    marginBottom: 5,
+                    backgroundColor: "#57CC9B",
+                }}>
+                    <Text>
+                        {item.title.substring(0, 24)}
+                    </Text>
+                    <Text>
+                        Airing/Aired: {item.airing}
+                    </Text>
+                    <Text>
+                        Episodes: {item.episodes}
+                    </Text>
+                    <Text>
+                        Rating: {item.rating}
+                    </Text>
+                    <Text>
+                        Genres: {item.type}
+                    </Text>
+                    <Text>
+                        Score: {item.score}
+                    </Text>
+                </View>
+            </SafeAreaView>
         )
     }
 
     return (
-        <SafeAreaView style={{ 
+        <View style={{ 
             backgroundColor: "#58CCE5", 
             flex: 1, 
             justifyContent: "flex-start", 
@@ -110,7 +130,7 @@ function MyProfile(props) {
                 renderItem={renderWatch}
                 keyExtractor={(item) => item.id}
             />
-        </SafeAreaView>
+        </View>
     )
 }
 
@@ -125,7 +145,8 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         marginLeft: 30,
         marginTop: 15,
-        borderRadius: 5
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5
     },
     textStyle: {
         width: 255,
