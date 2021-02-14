@@ -29,6 +29,7 @@ function Register({ navigation }) {
                 id: uid,
                 email,
                 name,
+                friends,
             };
             const usersRef = firebase.firestore().collection('users')
             usersRef
