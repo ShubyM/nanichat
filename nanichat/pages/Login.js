@@ -32,7 +32,7 @@ function Login({ navigation }) {
                     return;
                 }
                 const user = firestoreDocument.data()
-                navigation.navigate('Home', {user: 'user'})
+                navigation.navigate('Home')
             })
             .catch(error => {
                 alert(error)
