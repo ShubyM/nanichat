@@ -22,9 +22,9 @@ const searchBar = () => {
       <Text> ...loading </Text>
     ) : (
       results.map((item) => 
-        <View>
-          <Text key={item.title}> {item.title} </Text>
-          <TouchableOpacity>
+        <View style={{flexDirection: "row", alignContent: "space-between", marginLeft: 0}}>
+          <Text style={{width: 300, height: 40, fontSize: 15, paddingTop: 10, backgroundColor: "#57CC99", paddingLeft: 10, borderRadius: 5, textShadowColor: "#20232a"}} key={item.title}> {item.title.substring(0, 34)} </Text>
+          <TouchableOpacity style={{width: 30, height: 40, backgroundColor: "#57CC99", borderRadius:5, paddingTop: 10, marginLeft: -8}}>
             <AntDesign name="pluscircleo" size={24} color="black" />
           </TouchableOpacity>
         </View>)

@@ -52,14 +52,14 @@ export default function App() {
           </Stack.Screen>
         ) : (
           <>
-            {/* <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} /> */}
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Home">
               {props => <Home {...props} extraData={user} />}
             </Stack.Screen>
           </>
         )}
-        {/* <Stack.Screen name="Register" component={Register} /> */}
+        {/*<Stack.Screen name="Register" component={Register} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
