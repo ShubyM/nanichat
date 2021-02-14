@@ -93,8 +93,7 @@ function Search(props) {
             borderBottomColor: "#000000" }}>
         </View>
         <ScrollView>{renderItems()}</ScrollView>
-    </SafeAreaView>
-  );
+	)
 };
 
 export default Search;
