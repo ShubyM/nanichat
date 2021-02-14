@@ -7,11 +7,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Search(props) {
-  const [query, setQuery] = React.useState("");
-  const [results, setResults] = React.useState([]);
-  const [isLoading, setLoading] = React.useState(true);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
-  const watchlist = firebase.firestore().collection('users')
+  const watchlist = firebase.firestore().collection('watchlists')
   const userID = props.id
 
 
@@ -42,14 +42,13 @@ function Search(props) {
               backgroundColor: "#57CC99",  
               textShadowColor: "#20232a"}} key={item.title}> 
             {item.title.substring(0, 45)} 
-            Episodes: {item.episodes}
           </Text>
           <Image source={{uri: item.image_url}} style={{
               width: 50, 
               height: 50, 
               borderWidth: 1,
               borderColor: "#000000" }}/>
-          <TouchableOpacity style={{
+          <TouchableOpacity onPress={addToWatchlist} style={{
               width: 40, 
               height: 50,
               borderWidth: 1,
@@ -62,6 +61,25 @@ function Search(props) {
         </View>)
     );
   };
+
+  const addToWatchlist = ({item}) => {
+    const timestamp = firebase.firestore.FieldValue.serverTimeStamp();
+    const data = {
+      id: userID,
+      airing: item.airing,
+      createdAt: timestamp,
+      episodes: item.episodes,
+      image: item.image_url,
+      rating: item.rating,
+      type: item.type,
+      title: item.title
+    };
+    watchlist
+      .add(data)
+      .catch((error) => {
+        alert(error)
+      });
+  }
 
   return (
     <SafeAreaView
