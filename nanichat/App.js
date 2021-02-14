@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./components/Home";
-import searchBar from "./pages/Search.js";
 import { firebase } from "./config.js";
 
 const Stack = createStackNavigator();

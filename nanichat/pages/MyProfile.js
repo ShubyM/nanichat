@@ -23,9 +23,6 @@ function MyProfile(props) {
                     });
                     setWatchlist(newWatchlist)
                 },
-                error => {
-                    console.log(error)
-                }
             )
     }, [])
 
