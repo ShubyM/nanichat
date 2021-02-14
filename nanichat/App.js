@@ -26,11 +26,14 @@ export default function App() {
     } else {
       setLoggedIn(true);
       let usersRef = firebase.firestore().collection("users");
-			usersRef.doc(user.uid).get().then((document) => {
-				setName(document.data().name)
-				setId(document.data().id)
-				setFriends(document.data().friends)
-			})
+      usersRef
+        .doc(user.uid)
+        .get()
+        .then((document) => {
+          setName(document.data().name);
+          setId(document.data().id);
+          setFriends(document.data().friends);
+        });
     }
     //
   });
@@ -69,11 +72,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-				 <Stack.Screen name="Login" component={Login} />
-					<Stack.Screen name="Register" component={Register} /> 
-					<Stack.Screen name="Home">
-						{() => <Home userId={id} name={name} friends={friends} />}
-					</Stack.Screen>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Home">
+          {() => <Home userId={id} name={name} friends={friends} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
