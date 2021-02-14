@@ -4,6 +4,7 @@ import { SafeAreaView, FlatList, StyleSheet, Text, TouchableOpacity, View, Butto
 
 // main function for page
 function MyProfile(props) {
+	// console.log(props);
     return (
         <SafeAreaView style={{ 
             backgroundColor: "#58CCE5", 
