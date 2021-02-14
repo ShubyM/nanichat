@@ -17,9 +17,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 function Search(props) {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [query, setQuery] = React.useState("");
+  const [results, setResults] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(true);
 
   const watchlist = firebase.firestore().collection("watchlists");
   const userID = props.id;
