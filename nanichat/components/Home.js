@@ -7,19 +7,17 @@ import MyProfile from "../pages/MyProfile";
 
 const Tab = createBottomTabNavigator();
 
-function Home() {
+export default function Home(props) {
     return (
         <Tab.Navigator tabBarOptions={{showLabel: false}}>
             <Tab.Screen name="Dashboard" component={Dashboard} options={{tabBarIcon: ({focused}) =>
                 focused ? (<MaterialIcons name='dashboard' size={40} color='blue' />)
-                : (<MaterialIcons name='dashboard' size={40} color='black' />),
+                : (<MaterialIcons name='dashboard' size={30} color='black' />),
             }} />
             <Tab.Screen name="My Profile" component={MyProfile} options={{tabBarIcon: ({focused}) =>
                 focused ? (<MaterialIcons name='person' size={40} color='blue' />)
-                : (<MaterialIcons name='person' size={40} color='black' />),
+                : (<MaterialIcons name='person' size={30} color='black' />),
             }} />
         </Tab.Navigator>
     )
 }
-
-export default Home;
