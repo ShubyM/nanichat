@@ -11,30 +11,30 @@ import { firebase } from "./config.js";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  // const [user, setUser] = useState(null)
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
-  const [friends, setFriends] = useState([]);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(null)
+  // const [name, setName] = useState("");
+  // const [id, setId] = useState("");
+  // const [friends, setFriends] = useState([]);
 
-  useEffect(() => {
-    const user = firebase.auth().currentUser;
+  // useEffect(() => {
+  //   const user = firebase.auth().currentUser;
 
-    if (user === null) {
-      setLoggedIn(false);
-    } else {
-      setLoggedIn(true);
-      const usersRef = firebase.firestore().collection("users");
-      usersRef
-        .doc(user.uid)
-        .get()
-        .then((document) => {
-          setName(document.data().name);
-          setId(user.uid);
-          setFriends(document.data().friends);
-        });
-    }
-  }, []);
+  //   if (user === null) {
+  //     setLoggedIn(false);
+  //   } else {
+  //     setLoggedIn(true);
+  //     const usersRef = firebase.firestore().collection("users");
+  //     usersRef
+  //       .doc(user.uid)
+  //       .get()
+  //       .then((document) => {
+  //         setName(document.data().name);
+  //         setId(user.uid);
+  //         setFriends(document.data().friends);
+  //       });
+  //   }
+  // }, []);
 
   // name , id, friends
 
@@ -44,37 +44,46 @@ export default function App() {
   //   )
   // }
 
-  // useEffect(() => {
-  //   const usersRef = firebase.firestore().collection('users');
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     if (user) {
-  //       usersRef
-  //         .doc(user.uid)
-  //         .get()
-  //         .then((document) => {
-  //           const userData = document.data()
-  //           setLoading(false)
-  //           setUser(userData)
-  //         })
-  //         .catch((error) => {
-  //           setLoading(false)
-  //         });
-  //     } else {
-  //       setLoading(false)
-  //     }
-  //   });
-  // }, []);
-  //
-  //
+  useEffect(() => {
+    const usersRef = firebase.firestore().collection('users');
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        usersRef
+          .doc(user.uid)
+          .get()
+          .then((document) => {
+            const userData = document.data()
+            setLoading(false)
+            setUser(userData)
+          })
+          .catch((error) => {
+            setLoading(false)
+          });
+      } else {
+        setLoading(false)
+      }
+    });
+  }, []);
+  
+  
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Home">
-          {props => <Home id={props.id} name={props.name} friends={props.friends} />}
-        </Stack.Screen>
+      { user ? (
+          <Stack.Screen name="Home">
+            {props => <Home {...props} extraData={user}/>}
+          </Stack.Screen>
+        ) : (
+          <>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Home">
+            {props => <Home {...props} extraData={user}/>}
+          </Stack.Screen>
+          </>
+      )}
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -14,11 +14,11 @@ export default function Home(props) {
                 focused ? (<MaterialIcons name='dashboard' size={40} color='#58CCE5' />)
                 : (<MaterialIcons name='dashboard' size={30} color='black' />),
             }} />
-            <Tab.Screen name="My Profile" children={() => <MyProfile name={props.name} id={props.id}/>} options={{tabBarIcon: ({focused}) =>
+            <Tab.Screen name="My Profile" children={() => <MyProfile name={props.route.params.user.name} id={props.route.params.user.id}/>} options={{tabBarIcon: ({focused}) =>
                 focused ? (<MaterialIcons name='person' size={40} color='#58CCE5' />)
                 : (<MaterialIcons name='person' size={30} color='black' />),
             }} />
-            <Tab.Screen name="Search" children={() => <Search id={props.id} />} options={{tabBarIcon: ({focused}) =>
+            <Tab.Screen name="Search" children={() => <Search id={props.route.params.user.id} />} options={{tabBarIcon: ({focused}) =>
                 focused ? (<MaterialIcons name='search' size={40} color='#58CCE59' />)
                 : (<MaterialIcons name='search' size={40} color='black' />),
             }} />

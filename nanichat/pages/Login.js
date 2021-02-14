@@ -34,6 +34,7 @@ function Login({ navigation }) {
                     return;
                 }
                 const user = firestoreDocument.data()
+                console.log(user);
                 navigation.navigate('Home', {user})
             })
             .catch(error => {
