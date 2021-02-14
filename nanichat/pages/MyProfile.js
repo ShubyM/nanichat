@@ -42,13 +42,13 @@ function MyProfile(props) {
                 width: 300,
                 marginLeft: 30,
                 backgroundColor: "#57CC9B",
-                borderWidth: 1,
+                borderWidth: 2,
                 borderColor: "#2FC069",
                 flexDirection: "row", 
                 justifyContent: "flex-start",
                 alignContent: "flex-start"}}>
             <View>
-                <Image source={{uri: item.image}} style={{width: 125, height: 125}}/>
+                <Image source={{uri: item.image}} style={{width: 125, height: 125, marginTop: 2.5}}/>
             </View>
             <View style={{
                 marginLeft: 10,
@@ -165,7 +165,8 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     marginLeft: 30,
     marginTop: 15,
-    borderRadius: 5,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5
   },
   textStyle: {
     width: 255,
