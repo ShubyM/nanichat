@@ -52,7 +52,7 @@ function Register({ navigation }) {
       flex: 1, 
       justifyContent: "center", 
       alignItems: "center" }}>
-      <Text style={{fontSize: 18, fontWeight: "bold", marginBottom: 5}}>Register an Account</Text>
+      <Text style={{fontSize: 20, fontWeight: "bold", marginBottom: 5}}>Register an Account</Text>
       <TextInput style={styles.inputStyle}
         placeholder="Name"
         onChangeText={(text) => setName(text)}
