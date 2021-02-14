@@ -40,7 +40,7 @@ const searchBar = () => {
       }}
     >
       <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1, width: 250, padding: 10}}
+        style={{ height: 40, width: 250, borderColor: "gray", paddingLeft: 10, borderWidth: 1 }}
         onChangeText={(text) => setQuery(text)}
         placeholder="Search"
         value={query}
