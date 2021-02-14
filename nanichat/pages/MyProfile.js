@@ -5,9 +5,13 @@ import { SafeAreaView, FlatList, StyleSheet, Text, TouchableOpacity, View, Butto
 // main function for page
 function MyProfile(props) {
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "space-around", alignItems: "flex-start"}}>
+        <SafeAreaView style={{ 
+            backgroundColor: "#58CCE5", 
+            flex: 1, 
+            justifyContent: "flex-start", 
+            alignItems: "flex-start" }}>
             <View style={{alignSelf: "center"}}>
-                <Image source={require('./aqua.png')} style={{height: 150, width: 150}}/>
+                <Image source={require('./aqua.png')} style={{height: 150, width: 150, marginTop: 30 }}/>
                 <Text>{props.name}'s Profile</Text>
             </View>
             <View style={styles.viewStyle}>
@@ -44,10 +48,11 @@ const styles = StyleSheet.create({
     viewStyle: {
         height: 40,
         width: 300,
-        backgroundColor: "#57CC99", 
+        backgroundColor: "#2FC069", 
         flexDirection:"row",
         paddingTop: 5,
         marginLeft: 30,
+        marginTop: 15
     },
     textStyle: {
         width: 255,

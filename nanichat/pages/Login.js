@@ -43,7 +43,7 @@ function Login({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <SafeAreaView style={{ backgroundColor: "#58CCE5", flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Login</Text>
       <TextInput
         placeholder="Email"
@@ -62,7 +62,7 @@ function Login({ navigation }) {
         Don't have an account?{" "}
         <Text onPress={onSwitchRegisterPress}>Sign up</Text>
       </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

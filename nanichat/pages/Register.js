@@ -46,7 +46,11 @@ function Register({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <SafeAreaView style={{ 
+      backgroundColor: "#58CCE5", 
+      flex: 1, 
+      justifyContent: "center", 
+      alignItems: "center" }}>
       <Text>Register an Account</Text>
       <TextInput
         placeholder="Name"
@@ -70,7 +74,7 @@ function Register({ navigation }) {
       <Text>
         Already have an account? <Text onPress={onSwitchLoginPress}>Login</Text>
       </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

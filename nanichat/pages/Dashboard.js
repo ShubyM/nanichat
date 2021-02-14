@@ -3,9 +3,9 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 function Dashboard() {
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>Dashboard/Home Screen to view friends!</Text>
-        </View>
+            <SafeAreaView style={{ backgroundColor: "#58CCE5", flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <Text style={{fontSize: 18}}>Dashboard/Home Screen to view friends!</Text>
+            </SafeAreaView>
     );
 }
 

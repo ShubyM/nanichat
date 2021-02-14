@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, FlatList, StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
+import { SafeAreaView, FlatList, StyleSheet, Text, Image, View, Button, TextInput, ScrollView } from 'react-native';
 import React, { useState, useEffect } from "react";
 import { search } from "../util.js";
 import { firebase } from '../config'
@@ -24,14 +24,31 @@ function Search(props) {
 
   const renderItems = () => {
     return isLoading ? (
-      <Text> ...loading </Text>
+      <Text style={{marginTop: 5}}> ...loading </Text>
     ) : (
       results.map((item) => 
-        <View style={{flexDirection: "row", alignContent: "space-between", marginLeft: 0}}>
-          <Text style={{width: 300, height: 40, fontSize: 15, paddingTop: 10, backgroundColor: "#57CC99", paddingLeft: 10, borderRadius: 5, textShadowColor: "#20232a"}} key={item.title}> {item.title.substring(0, 34)} </Text>
-          <TouchableOpacity style={{width: 30, height: 40, backgroundColor: "#57CC99", borderRadius:5, paddingTop: 10, marginLeft: -8}}>
-            <AntDesign name="pluscircleo" size={24} color="black" />
-          </TouchableOpacity>
+        <View style={{
+            flexDirection: "row", 
+            alignContent: "space-between", 
+            marginLeft: 0 }}>
+            <Text style={{
+                width: 300, 
+                height: 40, 
+                fontSize: 15, 
+                paddingTop: 10, 
+                backgroundColor: "#57CC99", 
+                paddingLeft: 10, 
+                borderRadius: 5, 
+                textShadowColor: "#20232a"}} key={item.title}> {item.title.substring(0, 34)} </Text>
+            <TouchableOpacity style={{
+                width: 30, 
+                height: 40, 
+                backgroundColor: "#57CC99", 
+                borderRadius:5, 
+                paddingTop: 10, 
+                marginLeft: -8 }}>
+                <AntDesign name="pluscircleo" size={24} color="black" />
+            </TouchableOpacity>
         </View>)
     );
   };
@@ -39,13 +56,22 @@ function Search(props) {
   return (
     <SafeAreaView
       style={{
+        backgroundColor: "#58CCE5",
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <TextInput
-        style={{ height: 40, width: 250, borderColor: "gray", paddingLeft: 10, borderWidth: 1 }}
+        style={{ 
+            height: 40, 
+            width: 250, 
+            borderColor: "gray", 
+            backgroundColor: "#FFFFFF", 
+            paddingLeft: 10, 
+            borderWidth: 1,
+            marginTop: 30,
+            marginBottom: 20 }}
         onChangeText={(text) => setQuery(text)}
         placeholder="Search"
         value={query}
