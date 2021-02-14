@@ -52,7 +52,8 @@ function Login({ navigation }) {
       alignItems: "center" }}>
       <Text style={{
         fontSize: 20,
-        fontWeight: "bold" }}>Login</Text>
+        fontWeight: "bold",
+        marginBottom: 10}}>Login</Text>
       <TextInput style={styles.inputStyle}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
